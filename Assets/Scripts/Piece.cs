@@ -74,11 +74,17 @@ public class Piece : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            Rotate("clockwise");
+            if (!applySpecialRotation(this.data.tetromino))
+            {
+                Rotate("clockwise");
+            }
         }
         else if (Input.GetKeyDown(KeyCode.E))
         {
+            if (!applySpecialRotation(this.data.tetromino))
+            {
             Rotate("counterclockwise");
+            }
         }
 
 
@@ -134,11 +140,6 @@ public class Piece : MonoBehaviour
 
     public void Rotate(string direction)
     {
-
-        if (applySpecialRotation(this.data.tetromino))
-        {
-            return;
-        }
 
 
         Vector3Int[] rotatedCells = new Vector3Int[4];
@@ -198,11 +199,16 @@ public class Piece : MonoBehaviour
 
         if (this.rotated)
         {
-            this.data.Initialize();
+            print("reset flavor " + flavor);
+            for (int i = 0; i < data.cells.Length; i++)
+            {
+                this.cells[i] = (Vector3Int)data.cells[i];
+            }
         }
         else
         {
-            this.cells = Data.rotatedCells[flavor];
+            Vector3Int[] newCells = Data.rotatedCells[flavor];
+            this.cells = newCells;
         }
 
         print("rotated: " + this.rotated);
