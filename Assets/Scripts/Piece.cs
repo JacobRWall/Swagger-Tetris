@@ -201,16 +201,35 @@ public class Piece : MonoBehaviour
                 return false;
         }
 
+        Vector3Int[] newCells = new Vector3Int[4];
+
         if (this.rotated)
         {
             for (int i = 0; i < data.cells.Length; i++)
             {
-                this.cells[i] = (Vector3Int)data.cells[i];
+                newCells[i] = (Vector3Int)data.cells[i];
             }
         }
         else
         {
-            Vector3Int[] newCells = Data.rotatedCells[flavor];
+            for (int i = 0; i < newCells.Length; i++)
+            {
+                newCells[i] = Data.rotatedCells[flavor][i];
+            }
+        }
+
+        if (!this.board.isValidPosition(newCells, this.position))
+        {
+            if (attemptWallKick(newCells, this.position))
+            {
+                for (int i = 0; i < newCells.Length; i++)
+                {
+                    this.cells[i] = newCells[i];
+                }
+            };
+        }
+        else
+        {
             for (int i = 0; i < newCells.Length; i++)
             {
                 this.cells[i] = newCells[i];

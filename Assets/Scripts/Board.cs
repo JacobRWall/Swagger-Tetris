@@ -17,6 +17,8 @@ public class Board : MonoBehaviour
     private int RIGHT_BORDER = 4;
     private int BOTTOM_BORDER = -10;
 
+    private int TOP_BORDER = 9;
+
 
 
     public ArrayList landedPieces = new ArrayList();
@@ -170,6 +172,11 @@ public class Board : MonoBehaviour
             else if (true_y < BOTTOM_BORDER)
             {
                 print("outside bottom boundary");
+                return false;
+            }
+            else if (true_y > TOP_BORDER)
+            {
+                print("outside top boundary");
                 return false;
             }
             // inside landed piece
