@@ -91,6 +91,7 @@ public class Board : MonoBehaviour
     {
 
         Set(piece);
+        clearLines();
         SpawnPiece();
 
         for (int i = 0; i < piece.cells.Length; i++)
@@ -98,13 +99,11 @@ public class Board : MonoBehaviour
             this.landedPieces.Add(piece.cells[i] + position);
         }
 
-        clearLines();
+
     }
 
     public void clearLines()
     {
-
-
         for (int i = TOP_BORDER; i >= BOTTOM_BORDER; i--)
         {
             bool clearLine = true;
@@ -121,6 +120,20 @@ public class Board : MonoBehaviour
                 {
                     tilemap.SetTile(new Vector3Int(k, i, 0), null);
                 }
+                squashLines(i);
+            }
+        }
+    }
+
+    public void squashLines(int clearedLine)
+    {
+        // so every time i clear a line, i should call this method with the Y coordinate of the cleared line
+        // then i traverse the tilemap going right to left going up and set each tile to the one above it
+        for (int i = clearedLine; i <= TOP_BORDER; i++)
+        {
+            for (int j = RIGHT_BORDER; j >= LEFT_BORDER; j--)
+            {
+                tilemap.SetTile(new Vector3Int(j, i, 0), tilemap.GetTile(new Vector3Int(j, i + 1, 0)));
             }
         }
     }
