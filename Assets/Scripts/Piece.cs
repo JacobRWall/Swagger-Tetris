@@ -192,6 +192,8 @@ public class Piece : MonoBehaviour
                 break;
             case Tetromino.Z:
                 break;
+            case Tetromino.S:
+                break;
             case Tetromino.O:
                 return true;
             default:
