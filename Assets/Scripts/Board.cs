@@ -97,6 +97,32 @@ public class Board : MonoBehaviour
         {
             this.landedPieces.Add(piece.cells[i] + position);
         }
+
+        clearLines();
+    }
+
+    public void clearLines()
+    {
+
+
+        for (int i = TOP_BORDER; i >= BOTTOM_BORDER; i--)
+        {
+            bool clearLine = true;
+            for (int j = LEFT_BORDER; j <= RIGHT_BORDER; j++)
+            {
+                if (!tilemap.GetTile(new Vector3Int(j, i, 0)))
+                {
+                    clearLine = false;
+                }
+            }
+            if (clearLine)
+            {
+                for (int k = LEFT_BORDER; k <= RIGHT_BORDER; k++)
+                {
+                    tilemap.SetTile(new Vector3Int(k, i, 0), null);
+                }
+            }
+        }
     }
 
     public bool validateAndLand(Piece piece, Vector3Int position)
