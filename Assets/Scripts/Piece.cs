@@ -83,7 +83,7 @@ public class Piece : MonoBehaviour
         {
             if (!applySpecialRotation(this.data.tetromino))
             {
-            Rotate("counterclockwise");
+                Rotate("counterclockwise");
             }
         }
 
@@ -208,7 +208,10 @@ public class Piece : MonoBehaviour
         else
         {
             Vector3Int[] newCells = Data.rotatedCells[flavor];
-            this.cells = newCells;
+            for (int i = 0; i < newCells.Length; i++)
+            {
+                this.cells[i] = newCells[i];
+            }
         }
 
         print("rotated: " + this.rotated);
