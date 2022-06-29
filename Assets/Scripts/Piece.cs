@@ -190,6 +190,8 @@ public class Piece : MonoBehaviour
         {
             case Tetromino.I:
                 break;
+            case Tetromino.Z:
+                break;
             case Tetromino.O:
                 return true;
             default:
@@ -199,7 +201,6 @@ public class Piece : MonoBehaviour
 
         if (this.rotated)
         {
-            print("reset flavor " + flavor);
             for (int i = 0; i < data.cells.Length; i++)
             {
                 this.cells[i] = (Vector3Int)data.cells[i];
@@ -213,8 +214,6 @@ public class Piece : MonoBehaviour
                 this.cells[i] = newCells[i];
             }
         }
-
-        print("rotated: " + this.rotated);
 
         this.rotated = !this.rotated;
         return true;
