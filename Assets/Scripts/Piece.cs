@@ -9,16 +9,16 @@ public class Piece : MonoBehaviour
     private float update;
 
     public Board board { get; private set; }
-    public TetrominoData data { get; private set; }
-    public Vector3Int[] cells { get; private set; }
-    public Vector3Int position { get; private set; }
+    public TetrominoData data { get; set; }
+    public Vector3Int[] cells { get; set; }
+    public Vector3Int position { get; set; }
     public bool movedDown { get; private set; }
 
     public bool gravityEnabled { get; private set; }
 
     public string keyPressed { get; private set; }
 
-    private bool rotated;
+    public bool rotated;
 
     public void Initialize(Board board, Vector3Int position, TetrominoData data)
     {
@@ -41,7 +41,7 @@ public class Piece : MonoBehaviour
     void Update()
     {
 
-        if (this.board.paused)
+        if (Board.paused)
         {
             return;
         }
@@ -102,7 +102,7 @@ public class Piece : MonoBehaviour
 
     public void gravityMoveDown()
     {
-        if (this.board.gravityEnabled)
+        if (Board.gravityEnabled)
         {
             Move("down");
         }

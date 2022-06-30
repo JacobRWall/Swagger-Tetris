@@ -254,6 +254,7 @@ MonoBehaviour:
   - tetromino: 6
     tile: {fileID: 11400000, guid: e1730a41d86af42d5b6b5f94e44c1833, type: 2}
   spawnPosition: {x: -1, y: 8, z: 0}
+  previousPosition: {x: 0, y: 0, z: 0}
 --- !u!156049354 &679173476
 Grid:
   m_ObjectHideFlags: 0
@@ -294,6 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9559d881415fd466e9e7162df08d513b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotated: 0
 --- !u!1 &895123264
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,6 +306,8 @@ GameObject:
   m_Component:
   - component: {fileID: 895123266}
   - component: {fileID: 895123265}
+  - component: {fileID: 895123268}
+  - component: {fileID: 895123267}
   m_Layer: 0
   m_Name: Ghost Board
   m_TagString: Untagged
@@ -339,6 +343,63 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &895123267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895123264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f680eb37ffc364a42a3283a8302a415a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotated: 0
+--- !u!114 &895123268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895123264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ff59cfdd477b4a1aa7dc607a2c6b469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tetrominos:
+  - tetromino: 0
+    tile: {fileID: 11400000, guid: 7f379d4268549417fbc957722ea5c064, type: 2}
+  - tetromino: 1
+    tile: {fileID: 11400000, guid: 7f379d4268549417fbc957722ea5c064, type: 2}
+  - tetromino: 2
+    tile: {fileID: 11400000, guid: 7f379d4268549417fbc957722ea5c064, type: 2}
+  - tetromino: 3
+    tile: {fileID: 11400000, guid: 7f379d4268549417fbc957722ea5c064, type: 2}
+  - tetromino: 4
+    tile: {fileID: 11400000, guid: 7f379d4268549417fbc957722ea5c064, type: 2}
+  - tetromino: 5
+    tile: {fileID: 11400000, guid: 7f379d4268549417fbc957722ea5c064, type: 2}
+  - tetromino: 6
+    tile: {fileID: 11400000, guid: 7f379d4268549417fbc957722ea5c064, type: 2}
+  spawnPosition: {x: 0, y: 0, z: 0}
+  previousPosition: {x: 0, y: 0, z: 0}
+  tetrominos:
+  - tetromino: 0
+    tile: {fileID: 11400000, guid: 7f379d4268549417fbc957722ea5c064, type: 2}
+  - tetromino: 1
+    tile: {fileID: 11400000, guid: 7f379d4268549417fbc957722ea5c064, type: 2}
+  - tetromino: 2
+    tile: {fileID: 11400000, guid: 7f379d4268549417fbc957722ea5c064, type: 2}
+  - tetromino: 3
+    tile: {fileID: 11400000, guid: 7f379d4268549417fbc957722ea5c064, type: 2}
+  - tetromino: 4
+    tile: {fileID: 11400000, guid: 7f379d4268549417fbc957722ea5c064, type: 2}
+  - tetromino: 5
+    tile: {fileID: 11400000, guid: 7f379d4268549417fbc957722ea5c064, type: 2}
+  - tetromino: 6
+    tile: {fileID: 11400000, guid: 7f379d4268549417fbc957722ea5c064, type: 2}
 --- !u!1 &1573986827
 GameObject:
   m_ObjectHideFlags: 0

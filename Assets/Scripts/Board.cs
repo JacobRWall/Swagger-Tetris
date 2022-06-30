@@ -10,8 +10,8 @@ public class Board : MonoBehaviour
     public Vector3Int spawnPosition;
     public Vector3Int previousPosition;
 
-    public bool gravityEnabled { get; private set; }
-    public bool paused { get; private set; }
+    public static bool gravityEnabled { get; private set; }
+    public static bool paused { get; private set; }
 
     private int LEFT_BORDER = -5;
     private int RIGHT_BORDER = 4;
@@ -21,14 +21,14 @@ public class Board : MonoBehaviour
 
 
 
-    public ArrayList landedPieces = new ArrayList();
+    public static ArrayList landedPieces = new ArrayList();
 
     private void Awake()
     {
         this.tilemap = GetComponentInChildren<Tilemap>();
         this.activePiece = GetComponentInChildren<Piece>();
-        this.gravityEnabled = true;
-        this.paused = false;
+        gravityEnabled = true;
+        paused = false;
 
         for (int i = 0; i < tetrominos.Length; i++)
         {
@@ -44,11 +44,11 @@ public class Board : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.G))
         {
-            this.gravityEnabled = !this.gravityEnabled;
+            gravityEnabled = !gravityEnabled;
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
-            this.paused = !this.paused;
+            paused = !paused;
         }
     }
 
@@ -96,9 +96,8 @@ public class Board : MonoBehaviour
 
         for (int i = 0; i < piece.cells.Length; i++)
         {
-            this.landedPieces.Add(piece.cells[i] + position);
+            landedPieces.Add(piece.cells[i] + position);
         }
-
 
     }
 
@@ -198,24 +197,24 @@ public class Board : MonoBehaviour
             // inside left boundary
             if (true_x < LEFT_BORDER)
             {
-                print("outside left boundary");
+                // print("outside left boundary");
                 return false;
             }
             // inside right boundary
             else if (true_x > RIGHT_BORDER)
             {
-                print("outside right boundary");
+                // print("outside right boundary");
                 return false;
             }
             // inside bottom boundary
             else if (true_y < BOTTOM_BORDER)
             {
-                print("outside bottom boundary");
+                // print("outside bottom boundary");
                 return false;
             }
             else if (true_y > TOP_BORDER)
             {
-                print("outside top boundary");
+                // print("outside top boundary");
                 return false;
             }
             // inside landed piece
@@ -224,7 +223,7 @@ public class Board : MonoBehaviour
 
             if (tileTaken)
             {
-                print("contact with landed piece");
+                // print("contact with landed piece");
                 return false;
             }
 
